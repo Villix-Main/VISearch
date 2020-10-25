@@ -1,0 +1,85 @@
+root = true
+
+# To learn more about .editorconfig see https://aka.ms/editorconfigdocs
+
+# editorconfig file format
+# 1. Code files
+# 2. Naming conventions
+# 3. Coding conventions
+# 4. Removal of unnecessary code
+
+# Code files
+[*.cs]
+indent_size = 4
+insert_final_newline = true
+indent_style = space
+
+############ Naming Conventions ############
+
+# Force using var when making a instance of a class
+csharp_style_var_when_type_is_apparent = true:error
+
+# Force asynchronous method names to end with async
+dotnet_naming_rule.async_methods_must_end_with_async.severity = error
+dotnet_naming_rule.async_methods_must_end_with_async.symbols = async_methods_must_end_with_async_symbols
+dotnet_naming_rule.async_methods_must_end_with_async.style = async_methods_must_end_with_async_style 
+
+dotnet_naming_symbols.async_methods_must_end_with_async_symbols.applicable_kinds = method
+dotnet_naming_symbols.async_methods_must_end_with_async_symbols.required_modifiers = async
+
+dotnet_naming_style.async_methods_must_end_with_async_style.capitalization = pascal_case
+dotnet_naming_style.async_methods_must_end_with_async_style.required_suffix = Async
+
+# Force private class members to start with _ 
+# ex. _logger
+dotnet_naming_rule.private_members_must_start_with__.severity = error
+dotnet_naming_rule.private_members_must_start_with__.symbols = private_members_must_start_with___symbols
+dotnet_naming_rule.private_members_must_start_with__.style = private_members_must_start_with___style 
+
+dotnet_naming_symbols.private_members_must_start_with___symbols.applicable_kinds = field
+dotnet_naming_symbols.private_members_must_start_with___symbols.applicable_accessibilities = private
+
+dotnet_naming_style.private_members_must_start_with___style.capitalization = camel_case
+dotnet_naming_style.private_members_must_start_with___style.required_prefix = _
+
+# Force all classes, properties and methods to be Pascal_Case
+dotnet_naming_rule.defined_names_must_be_pascalcase.severity = error
+dotnet_naming_rule.defined_names_must_be_pascalcase.symbols = defined_names_must_be_pascalcase_symbols
+dotnet_naming_rule.defined_names_must_be_pascalcase.style = defined_names_must_be_pascalcase_style
+
+dotnet_naming_symbols.defined_names_must_be_pascalcase_symbols.applicable_kinds = class, method, property
+dotnet_naming_symbols.defined_names_must_be_pascalcase_symbols.applicable_accessibilities = *
+
+dotnet_naming_style.defined_names_must_be_pascalcase_style.capitalization = pascal_case
+
+
+############ Coding Conventions ############
+
+# Force null checking to be used in format
+# b = a ?? throw()
+# and not
+# if (a == null) throw(); b = a;
+csharp_style_throw_expression = true:error
+
+# Force to use simple using statements in code
+# using var a = b; Instead of
+# using (var a = b) {}
+csharp_prefer_simple_using_statement = true:error
+
+# Force any code block(methods, constructors .ext) that are single 
+# Lined to be styled as a expression.
+# public static void Test() => Console.WriteLine("Hello there");
+# instead of
+# public static void Test() { Console.WriteLIne("Hello there"); }
+csharp_style_expression_bodied_methods = true:error
+csharp_style_expression_bodied_constructors = true:error
+csharp_style_expression_bodied_properties = true:error
+csharp_style_expression_bodied_accessors = true:error
+csharp_style_expression_bodied_indexers = true:error
+csharp_style_expression_bodied_lambdas = true:error
+
+############ Removal of unnecessary code ############
+
+
+
+

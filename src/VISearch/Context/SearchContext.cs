@@ -1,6 +1,9 @@
 ﻿namespace VISearch
 {
-    public class SearchContext
+    /// <summary>
+    /// 
+    /// </summary>
+    public class SearchContext<TSearchType>
     {
         #region Private Members
 

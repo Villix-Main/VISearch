@@ -18,7 +18,7 @@ namespace VISearch
     /// 
     /// <para>
     /// You can also decorate class members with the 
-    /// <see cref="VISearchAttribute"/>, if you want one or more to have a higher <br />
+    /// <see cref="SearchItemAttribute"/>, if you want one or more to have a higher <br />
     /// priority level then others.
     /// </para>
     /// </remarks>

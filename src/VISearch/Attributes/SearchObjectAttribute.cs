@@ -34,6 +34,6 @@ namespace VISearch
         /// name property to null since the name only applies to properties and fields <br />
         /// and not classes</remarks>
         public SearchObjectAttribute()
-            : base(null) { }
+            : base(string.Empty) { }
     }
 }

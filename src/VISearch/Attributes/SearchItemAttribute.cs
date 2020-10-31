@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VISearch.Attributes
+namespace VISearch
 {
     /// <summary>
     /// Specifies that a property of field is a Search Item and will be

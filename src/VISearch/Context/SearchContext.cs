@@ -39,6 +39,7 @@ namespace VISearch
         /// </summar
         public SearchContext()
         {
+                
         }
 
         #endregion  

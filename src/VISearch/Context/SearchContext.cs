@@ -55,9 +55,6 @@ namespace VISearch
         /// </summar
         public SearchContext()
         {
-            // Create new instance of the pipeline items list
-            _items = new List<PipelineItem>();
-
             // Get the SearchType
             var type = typeof(TSearchType);
 
@@ -69,7 +66,7 @@ namespace VISearch
             // And if not throw an exception
             if (members == null)
                 throw new InvalidOperationException($"'{ nameof(TSearchType) }' must contain at least property or field as required by the Search Pipeline");
-
+            
             if (type.GetCustomAttribute<SearchObjectAttribute>() == null)
             {
                 foreach (var memInfo in members)

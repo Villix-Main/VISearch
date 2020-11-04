@@ -97,7 +97,7 @@ namespace VISearch
                     {
                         var searchItemAttr = memInfo.GetCustomAttribute<SearchItemAttribute>();
 
-                        if (searchItemAttr == null)
+                        if (searchItemAttr != null)
                         {
                             var item = new PipelineItem
                             {
@@ -121,7 +121,7 @@ namespace VISearch
                 }
             }
 
-            if (_items != null)
+            if (_items.Count <= 0)
                 throw new InvalidOperationException($"'{ nameof(TSearchType) }' must have at least one property or field decorated with the '{ nameof(SearchItemAttribute) }' as required by the Search Pipeline");
 
 

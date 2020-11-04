@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using VISearch.Pipeline;
 
 /// <summary>
 /// The main context is the day
@@ -27,6 +31,18 @@ namespace VISearch
     {
         #region Private Members
 
+        /// <summary>
+        /// The list that would contain all the properties and fields
+        /// in <see cref="TSearchType"/> that are decorated with the <br />
+        /// <see cref="VISearchAttribute"/> or all non-ignored properties 
+        /// and fields if <see cref="TSearchType"/> is decorated with the <br />
+        /// <see cref="SearchObjectAttribute"/>.
+        /// </summary>
+        /// <remarks>
+        /// This list would be used intensively in the Search Pipeline
+        /// </remarks>
+        private List<PipelineItem> _items;
+
         #endregion
 
         #region Constructor
@@ -39,7 +55,76 @@ namespace VISearch
         /// </summar
         public SearchContext()
         {
-                
+            // Create new instance of the pipeline items list
+            _items = new List<PipelineItem>();
+
+            // Get the SearchType
+            var type = typeof(TSearchType);
+
+            // Get all the properties and fields from TSearchType and storing it in members
+            var members = (type.GetProperties(BindingFlags.Public | BindingFlags.Instance) as IEnumerable<MemberInfo>)
+                .Concat(type.GetFields(BindingFlags.Public | BindingFlags.Instance));
+
+            // Make sure the TSearchType contains at least one property or field
+            // And if not throw an exception
+            if (members == null)
+                throw new InvalidOperationException($"'{ nameof(TSearchType) }' must contain at least property or field as required by the Search Pipeline");
+
+            if (type.GetCustomAttribute<SearchObjectAttribute>() == null)
+            {
+                foreach (var memInfo in members)
+                {
+                    var searchItemAttr = memInfo.GetCustomAttribute<SearchItemAttribute>();
+
+                    if (searchItemAttr != null)
+                    {
+                        var item = new PipelineItem
+                        {
+                            Name = searchItemAttr.Name ?? memInfo.Name,
+                            Priority = searchItemAttr.Priority
+                        };
+
+                        _items.Add(item);
+
+                    }
+                }
+            }
+            else
+            {
+                foreach (var memInfo in members)
+                {
+                    if (memInfo.GetCustomAttribute<SearchIgnoreAttribute>() == null)
+                    {
+                        var searchItemAttr = memInfo.GetCustomAttribute<SearchItemAttribute>();
+
+                        if (searchItemAttr == null)
+                        {
+                            var item = new PipelineItem
+                            {
+                                Name = searchItemAttr.Name ?? memInfo.Name,
+                                Priority = searchItemAttr.Priority
+                            };
+
+                            _items.Add(item);
+                        }
+                        else
+                        {
+                            var item = new PipelineItem
+                            {
+                                Name = memInfo.Name,
+                                Priority = 0
+                            };
+
+                            _items.Add(item);
+                        }
+                    }
+                }
+            }
+
+            if (_items != null)
+                throw new InvalidOperationException($"'{ nameof(TSearchType) }' must have at least one property or field decorated with the '{ nameof(SearchItemAttribute) }' as required by the Search Pipeline");
+
+
         }
 
         #endregion  

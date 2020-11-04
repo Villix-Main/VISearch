@@ -66,56 +66,16 @@ namespace VISearch
             // And if not throw an exception
             if (members == null)
                 throw new InvalidOperationException($"'{ nameof(TSearchType) }' must contain at least property or field as required by the Search Pipeline");
+
+            var filter = new PipelineFilter();
             
             if (type.GetCustomAttribute<SearchObjectAttribute>() == null)
             {
-                foreach (var memInfo in members)
-                {
-                    var searchItemAttr = memInfo.GetCustomAttribute<SearchItemAttribute>();
-
-                    if (searchItemAttr != null)
-                    {
-                        var item = new PipelineItem
-                        {
-                            Name = searchItemAttr.Name ?? memInfo.Name,
-                            Priority = searchItemAttr.Priority
-                        };
-
-                        _items.Add(item);
-
-                    }
-                }
+                _items = filter.Create(members);
             }
             else
             {
-                foreach (var memInfo in members)
-                {
-                    if (memInfo.GetCustomAttribute<SearchIgnoreAttribute>() == null)
-                    {
-                        var searchItemAttr = memInfo.GetCustomAttribute<SearchItemAttribute>();
-
-                        if (searchItemAttr != null)
-                        {
-                            var item = new PipelineItem
-                            {
-                                Name = searchItemAttr.Name ?? memInfo.Name,
-                                Priority = searchItemAttr.Priority
-                            };
-
-                            _items.Add(item);
-                        }
-                        else
-                        {
-                            var item = new PipelineItem
-                            {
-                                Name = memInfo.Name,
-                                Priority = 0
-                            };
-
-                            _items.Add(item);
-                        }
-                    }
-                }
+                _items = filter.CreateFromSearchObject(members);
             }
 
             if (_items.Count <= 0)

@@ -1,11 +1,9 @@
 ﻿namespace VISearch.Pipeline
 {
     /// <summary>
-    /// The main model that will be used the most throughout
-    /// the Search Pipeline. This class will most likely be <br />
-    /// instantiated in the <see cref="SearchContext{TSearchType}"/>. 
+    /// Represents a model that will be used in the Search Pipeline
     /// </summary>
-    public class PipelineItem : IPipelineItem
+    public interface IPipelineItem
     {
         /// <summary>
         /// The name of the pipeline item. This property will be used 
@@ -14,7 +12,7 @@
         /// name of a property of field of TSearchType.
         /// </summary> 
         /// <seealso cref="SearchContext{TSearchType}"/>
-        public string Name { get; set; }
+        string Name { get; set; }
 
         /// <summary>
         /// The priority level of the pipeline item. This level will 
@@ -23,7 +21,7 @@
         /// </summary>
         /// <remarks>
         /// To learn about the priority level check <see cref="SearchItemAttribute"/>
-        /// </remarks>
-        public int Priority { get; set; }
+        /// </summary>
+        int Priority { get; set; }
     }
 }

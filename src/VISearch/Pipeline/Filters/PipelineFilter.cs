@@ -59,11 +59,12 @@ namespace VISearch.Pipeline
         /// The members to use to filter down all the ones decorated with the
         /// <see cref="SearchItemAttribute"/>
         /// </param>
+        /// <param name="priority">The priority level of the Search Object</param>
         /// <returns>
         /// A <see cref="List{T}"/> of <see cref="PipelineItem"/> that contains all
         /// the members that were decorated with the <see cref="SearchItemAttribute"/>
         /// </returns>
-        public List<PipelineItem> CreateFromSearchObject(IEnumerable<MemberInfo> members)
+        public List<PipelineItem> CreateFromSearchObject(IEnumerable<MemberInfo> members, int priority)
         {
             // The list to add all pipeline items to
             var items = new List<PipelineItem>();
@@ -91,8 +92,8 @@ namespace VISearch.Pipeline
                             // Set the name to the name of the member itself
                             Name = member.Name,
 
-                            // Set the priority the 0
-                            Priority = 0
+                            // Set the priority the passed through priority value
+                            Priority = priority
                         };
 
                         // Add the new pipeline item to the collection

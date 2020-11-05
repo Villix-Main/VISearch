@@ -7,27 +7,15 @@ namespace VISearch.Pipeline
     /// The filters that would be used in the Search Pipeline
     /// to filter the TSearchType to only have the relevant <br />
     /// properties and fields that are decorated with the 
-    /// <see cref="SearchItemAttribute"/>.
+    /// <see cref="SearchItemAttribute"/>. This class is also the default <br />
+    /// implementation of the <see cref="IPipelineFilter"/>
     /// </summary>
     /// <remarks>
     /// The pipeline filter is simply just a collection
     /// of <see cref="PipelineItem"/>.
     /// </remarks>
-    internal class PipelineFilter
+    internal class PipelineFilter : IPipelineFilter
     {
-        /// <summary>
-        /// Creates a pipeline filter using a collection of 
-        /// <see cref="MemberInfo"/> taking into account that <br />
-        /// the member collection does not come from a class
-        /// decorated with the <see cref="SearchObjectAttribute"/>
-        /// </summary>
-        /// <param name="members">
-        /// The members to use to filter down all the ones decorated with the
-        /// <see cref="SearchItemAttribute"/></param>
-        /// <returns>
-        /// A <see cref="List{T}"/> of <see cref="PipelineItem"/> that contains all
-        /// the members that were decorated with the <see cref="SearchItemAttribute"/>
-        /// </returns>
         public List<PipelineItem> Create(IEnumerable<MemberInfo> members)
         {
             // The list to add all the pipeline items to
@@ -49,21 +37,6 @@ namespace VISearch.Pipeline
             return items;
         }
 
-        /// <summary>
-        /// Creates a pipeline filter using a collection of
-        /// <see cref="MemberInfo"/> taking into account that <br />
-        /// the member collection comes from class decorated with
-        /// the <see cref="SearchObjectAttribute"/>.
-        /// </summary>
-        /// <param name="members">
-        /// The members to use to filter down all the ones decorated with the
-        /// <see cref="SearchItemAttribute"/>
-        /// </param>
-        /// <param name="priority">The priority level of the Search Object</param>
-        /// <returns>
-        /// A <see cref="List{T}"/> of <see cref="PipelineItem"/> that contains all
-        /// the members that were decorated with the <see cref="SearchItemAttribute"/>
-        /// </returns>
         public List<PipelineItem> CreateFromSearchObject(IEnumerable<MemberInfo> members, int priority)
         {
             // The list to add all pipeline items to
@@ -79,7 +52,7 @@ namespace VISearch.Pipeline
 
                     // If the member is decorated with the SearchItemAttribute
                     if (searchItemAttr != null)
-                    {   
+                    {
                         // Create the pipeline item using data from the 
                         // SearchItemAttribute
                         items.Add(CreateItem(searchItemAttr, member));

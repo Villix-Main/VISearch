@@ -67,21 +67,21 @@ namespace VISearch
             if (members == null)
                 throw new InvalidOperationException($"'{ nameof(TSearchType) }' must contain at least property or field as required by the Search Pipeline");
 
+            // Create a new instance of the pipeline filter
             var filter = new PipelineFilter();
             
+            // If TSearchType is not decorated with the SearchObjectAttribute
+            // Create the pipeline filters using default method
             if (type.GetCustomAttribute<SearchObjectAttribute>() == null)
-            {
                 _items = filter.Create(members);
-            }
-            else
-            {
-                _items = filter.CreateFromSearchObject(members);
-            }
 
+            // Otherwise use method for a class decorated with the SearchObjectAttribute
+            else
+                _items = filter.CreateFromSearchObject(members);
+
+            // If the pipeline item list is empty, throw exception
             if (_items.Count <= 0)
                 throw new InvalidOperationException($"'{ nameof(TSearchType) }' must have at least one property or field decorated with the '{ nameof(SearchItemAttribute) }' as required by the Search Pipeline");
-
-
         }
 
         #endregion  

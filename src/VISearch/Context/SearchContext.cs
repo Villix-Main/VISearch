@@ -77,7 +77,7 @@ namespace VISearch
 
             // Otherwise use method for a class decorated with the SearchObjectAttribute
             else
-                _items = filter.CreateFromSearchObject(members);
+                _items = filter.CreateFromSearchObject(members, type.GetCustomAttribute<SearchObjectAttribute>().Priority);
 
             // If the pipeline item list is empty, throw exception
             if (_items.Count <= 0)

@@ -45,6 +45,6 @@ namespace VISearch
         /// and not classes</remarks>
         /// <param name="priority">The priority level of the Search Object</param>
         public SearchObjectAttribute(int priority = 0)
-            : base(string.Empty) { }
+            : base(string.Empty) => Priority = priority;
     }
 }

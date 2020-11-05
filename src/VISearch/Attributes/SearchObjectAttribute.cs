@@ -27,13 +27,24 @@ namespace VISearch
     public class SearchObjectAttribute : VISearchAttribute
     {
         /// <summary>
+        /// The priority level of the Search Object. This number 
+        /// will apply to all properties and fields that are not
+        /// decorated with the <see cref="SearchIgnoreAttribute"/>.
+        /// </summary>
+        /// <remarks>
+        /// To find out more about priority levels check <see cref="SearchItemAttribute.Priority"/>
+        /// </remarks>
+        public int Priority { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="SearchObjectAttribute"/>
         /// </summary>
         /// <remarks>
         /// The constructor also sets the base class <see cref="VISearchAttribute"/>
         /// name property to null since the name only applies to properties and fields <br />
         /// and not classes</remarks>
-        public SearchObjectAttribute()
+        /// <param name="priority">The priority level of the Search Object</param>
+        public SearchObjectAttribute(int priority = 0)
             : base(string.Empty) { }
     }
 }

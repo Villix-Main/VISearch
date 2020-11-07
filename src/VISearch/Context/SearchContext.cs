@@ -52,7 +52,7 @@ namespace VISearch
         /// purpose of the constructor is to validate <see cref="TSearchType"/>
         /// and to make sure it meet's requirements of the Search Pipeline. Any 
         /// signs of breaking these requirements 
-        /// </summar
+        /// </summary>
         public SearchContext()
         {
             // Get the SearchType

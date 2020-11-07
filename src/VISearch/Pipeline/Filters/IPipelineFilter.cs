@@ -20,7 +20,7 @@ namespace VISearch.Pipeline
         /// <returns>
         /// A <see cref="List{T}"/> of <see cref="PipelineItem"/> that contains all
         /// the members that were decorated with the <see cref="SearchItemAttribute"/>
-        /// </returns>IEnumerable<MemberInfo> members);
+        /// </returns>IEnumerable<MemberInfo> members);</MemberInfo>
         List<PipelineItem> Create(IEnumerable<MemberInfo> members);
 
         /// <summary>

@@ -1,6 +1,6 @@
 ﻿namespace VISearch
 {
-    public class SearchSettings
+    public enum SearchType
     {
     }
 }

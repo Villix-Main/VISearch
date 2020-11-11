@@ -17,7 +17,7 @@
         /// another string if the <see cref="SearchSettings"/> allow for it.
         /// </summary>
         /// <remarks>
-        /// This will the default search type that Search Pipeline
+        /// This will the default search format that Search Pipeline
         /// uses.
         /// </remarks>
         SearchString = 0,

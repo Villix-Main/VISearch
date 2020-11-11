@@ -1,9 +1,9 @@
 ﻿namespace VISearch
 {
     /// <summary>
-    /// The format of search that the Search Pipeline will
-    /// execute. The default search format that Search Pipeline <br />
-    /// will execute will be <see cref="SearchString"/>
+    /// The format of the search string that the Search Pipeline will
+    /// use. The default search format that Search Pipeline <br />
+    /// will use will be <see cref="SearchString"/>
     /// </summary>
     public enum SearchFormat
     {

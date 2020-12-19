@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Search\StringFormats\" />
-    <Folder Include="Validators\" />
+    <Folder Include="Search\StringFormats\FilterString\" />
+    <Folder Include="Search\StringFormats\ObjectNotation\" />
   </ItemGroup>
 
 </Project>

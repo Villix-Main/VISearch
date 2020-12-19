@@ -1,7 +1,6 @@
-﻿namespace VISearch.Search
+﻿namespace VISearch.Search.SearchFormats
 {
     public interface IStringFormater
     {
-        
     }
 }

@@ -59,7 +59,13 @@ namespace VISearch.Pipeline
         /// The members to use to filter down all the ones decorated with the
         /// <see cref="SearchItemAttribute"/>
         /// </param>
-        /// <param name="priority">The priority level of the Search Object</param>
+        /// <param name="priority">
+        /// The priority level of the Search Object. This is the priority level
+        /// that will be used for all class members that are not decorated with
+        /// <see cref="SearchItemAttribute"/> and <see cref="SearchItemAttribute"/>.
+        /// If the member is decorated with <see cref="SearchItemAttribute"/>, it
+        /// will use the priority level set in the attribute itself.
+        /// </param>
         /// <returns>
         /// A <see cref="List{T}"/> of <see cref="PipelineItem"/> that contains all
         /// the members that were decorated with the <see cref="SearchItemAttribute"/>

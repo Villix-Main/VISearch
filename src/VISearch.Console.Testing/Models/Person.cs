@@ -1,10 +1,12 @@
 ﻿namespace VISearch.ConsoleTesting
 {
+    [SearchObject]
     public class Person
     {
-        [SearchItem(0)]
+        [SearchIgnore]
         public string Name { get; set; }
 
+        [SearchIgnore]
         public int Age { get; set; }
     }
 }

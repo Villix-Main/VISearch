@@ -7,6 +7,8 @@ namespace VISearch.ConsoleTesting
         static void Main(string[] args)
         {
             var context = new AppSearchContext();
+
+
         }
     }
 }

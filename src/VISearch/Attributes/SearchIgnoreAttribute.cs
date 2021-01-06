@@ -25,7 +25,6 @@ namespace VISearch
         /// which uses the name property, will be ignoring 
         /// the property or field decorated with the <see cref="SearchIgnoreAttribute"/>
         /// </remarks>
-        public SearchIgnoreAttribute() :
-            base(string.Empty){ }
+        public SearchIgnoreAttribute() { }
     }
 }

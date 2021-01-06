@@ -126,10 +126,9 @@ namespace VISearch.Pipeline
             // From the SearchItemAttribute
             var item = new PipelineItem
             {
-                // If the name from the SearchItemAttribute is 
-                // Not null use that name, otherwise use the 
-                // Member's name itself.
-                Name = attr.Name ?? member.Name,
+                // Set the name of the item to the name of the 
+                // member itself
+                Name = member.Name,
 
                 Priority = attr.Priority
             };

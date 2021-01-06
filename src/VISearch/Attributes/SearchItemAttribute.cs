@@ -45,16 +45,7 @@ namespace VISearch
         /// The priority level of the SearchItem. Click on '<see cref="Priority"/>'
         /// to find out more about Search Item priority levels
         /// </param>
-        /// <param name="name">
-        /// The name of the Search Item. This name will be used in the
-        /// Search Pipeline to match properties with each other. Most <br />
-        /// of the time you will not set a name yourself as the Search 
-        /// Pipeline automatically names it with the name of the property <br />
-        /// or field.
-        /// </param>
-        public SearchItemAttribute(int priority, string name = null) :
-            base(name) => 
-            Priority = priority;
+        public SearchItemAttribute(int priority) => Priority = priority;
 
         #endregion
     }

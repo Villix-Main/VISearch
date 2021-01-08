@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Search\StringFormats\FilterString\" />
-    <Folder Include="Search\StringFormats\ObjectNotation\" />
   </ItemGroup>
 
 </Project>

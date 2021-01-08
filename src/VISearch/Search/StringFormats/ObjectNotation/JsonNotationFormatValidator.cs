@@ -4,7 +4,8 @@ using System.Text;
 
 namespace VISearch.Search.StringFormat
 {
-    public class JsonNotationFormatValidator
+    public class JsonNotationFormatValidator<TSearchType>
+        where TSearchType : class
     {
     }
 }

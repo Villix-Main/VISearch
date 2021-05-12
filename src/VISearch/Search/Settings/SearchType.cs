@@ -4,7 +4,8 @@
     /// The type of search that the Search Pipeline will
     /// execute. The search type will work with any Search <br />
     /// Format that does not already have it's own search 
-    /// type such as the <see cref="SearchFormat.FilterString"/> 
+    /// type such as the <see cref="SearchFormat.FilterString"/> <br />
+    /// which uses it's own version of the Strict SearchType
     /// </summary>
     public enum SearchType
     {

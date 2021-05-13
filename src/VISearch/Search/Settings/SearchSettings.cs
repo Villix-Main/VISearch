@@ -59,7 +59,7 @@
         /// The maximum number of filters that can be used
         /// at one search.
         /// </summary>
-        public int MaximumFilterAmount { get; set; }
+        public int MaximumFiltersPerSearch { get; set; }
 
         #endregion
 

@@ -21,7 +21,7 @@
         /// </summary>
         /// <remarks>
         /// To learn about the priority level check <see cref="SearchItemAttribute"/>
-        /// </summary>
+        /// </remarks>
         int Priority { get; set; }
     }
 }
